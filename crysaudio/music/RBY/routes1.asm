@@ -1,3 +1,6 @@
+; Jingle Bells - Santa's Little Helper (original Game Boy variation)
+; Based on the public-domain James Lord Pierpont melody.
+; 32 measures, 512 duration units per pitched channel.
 Music_Routes1::
 	channel_count 4
 	channel 1, Music_Routes1_Ch1
@@ -5,409 +8,346 @@ Music_Routes1::
 	channel 3, Music_Routes1_Ch3
 	channel 4, Music_Routes1_Ch4
 
-Music_Routes1_Ch1::
-	tempo 152
+Music_Routes1_Ch1:
+	tempo 132
 	volume 7, 7
-	vibrato 4, 2, 3
 	duty_cycle 2
-	toggle_perfect_pitch
-
-Music_Routes1_branch_9be9::
-	note_type 12, 10, 1
-	rest 4
+	note_type 12, 11, 3
+.loop:
+	; Chorus
+	; Measure 1 (C)
 	octave 4
+	note E_, 4
+	note E_, 4
+	note E_, 8
+	; Measure 2 (C)
+	octave 4
+	note E_, 4
+	note E_, 4
+	note E_, 8
+	; Measure 3 (C)
+	octave 4
+	note E_, 4
+	note G_, 4
+	note C_, 6
 	note D_, 2
-	note D_, 6
-	note D_, 2
-	note D_, 6
-	note D_, 2
-	note D_, 1
-	note C#, 1
-	octave 3
-	note B_, 1
+	; Measure 4 (C)
 	octave 4
-	note C#, 1
-	octave 3
-	note A_, 2
-	note A_, 2
-	note A_, 6
-	octave 4
-	note C#, 2
-	note C#, 6
-	note C#, 2
-	note C#, 4
-	octave 3
-	note A_, 2
-	octave 4
-	note C#, 2
-	octave 3
-	note B_, 2
-	octave 4
-	note C#, 4
-	octave 3
-	note A_, 2
-	note A_, 6
-	octave 4
-	note D_, 2
-	note D_, 6
-	note D_, 2
-	note D_, 6
-	note D_, 2
-	note D_, 1
-	note E_, 1
-	note D_, 1
-	note C#, 1
-	octave 3
-	note B_, 2
-	note A_, 2
-	note A_, 6
-	octave 4
-	note C#, 2
-	note C#, 6
-	octave 3
-	note A_, 2
-	octave 4
+	note E_, 12
+	note G_, 2
 	note E_, 2
-	octave 3
-	note A_, 2
-	note_type 12, 10, 2
+	; Measure 5 (F)
+	octave 4
+	note F_, 4
+	note F_, 4
+	note F_, 6
+	note F_, 2
+	; Measure 6 (C)
+	octave 4
+	note F_, 4
+	note E_, 4
+	note E_, 4
+	note E_, 2
+	note E_, 2
+	; Measure 7 (G7)
+	octave 4
+	note E_, 4
+	note D_, 4
+	note D_, 4
+	note E_, 4
+	; Measure 8 (G7)
+	octave 4
+	note D_, 8
+	note G_, 8
+	; Measure 9 (C)
+	octave 4
+	note E_, 4
+	note E_, 4
+	note E_, 8
+	; Measure 10 (C)
+	octave 4
+	note E_, 4
+	note E_, 4
+	note E_, 8
+	; Measure 11 (C)
+	octave 4
+	note E_, 4
+	note G_, 4
+	note C_, 6
+	note D_, 2
+	; Measure 12 (C)
+	octave 4
+	note E_, 12
+	note G_, 2
+	note E_, 2
+	; Measure 13 (F)
+	octave 4
+	note F_, 4
+	note F_, 4
+	note F_, 6
+	note F_, 2
+	; Measure 14 (C)
+	octave 4
+	note F_, 4
+	note E_, 4
+	note E_, 4
+	note E_, 2
+	note E_, 2
+	; Measure 15 (G7)
+	octave 4
+	note G_, 4
+	note G_, 4
+	note F_, 4
+	note D_, 4
+	; Measure 16 (C)
+	octave 4
+	note C_, 12
+	rest 4
+	; Verse
+	; Measure 17 (C)
 	octave 4
 	note G_, 4
 	note E_, 4
-	note F#, 2
-	note_type 12, 10, 1
-	octave 3
-	note A_, 2
-	note A_, 6
-	note A_, 2
-	note F#, 2
-	note A_, 4
-	note B_, 2
-	octave 4
-	note C#, 2
-	octave 3
-	note B_, 4
-	note A_, 2
-	note F#, 2
-	note A_, 4
-	note G_, 2
-	note E_, 2
-	note C#, 4
-	note A_, 2
-	octave 4
-	note D_, 2
-	octave 3
-	note A_, 4
-	note B_, 2
-	note G_, 2
-	note B_, 4
-	octave 4
-	note D_, 2
-	note E_, 2
-	note C#, 2
-	note D_, 2
-	octave 3
-	note A_, 2
-	note A_, 2
-	sound_loop 0, Music_Routes1_branch_9be9
-	sound_ret
-
-
-Music_Routes1_Ch2::
-	duty_cycle 2
-
-Music_Routes1_branch_9c53::
-	note_type 12, 13, 1
-	sound_call Music_Routes1_branch_9c65
-	sound_call Music_Routes1_branch_9c78
-	sound_call Music_Routes1_branch_9c65
-	sound_call Music_Routes1_branch_9c8d
-	sound_loop 0, Music_Routes1_branch_9c53
-
-Music_Routes1_branch_9c65::
-	octave 4
-	note D_, 1
-	note E_, 1
-	note F#, 2
-	note F#, 2
-	note F#, 2
-	note D_, 1
-	note E_, 1
-	note F#, 2
-	note F#, 2
-	note F#, 2
-	note D_, 1
-	note E_, 1
-	note F#, 2
-	note F#, 2
-	note G_, 3
-	note F#, 1
-	note E_, 6
-	sound_ret
-
-Music_Routes1_branch_9c78::
-	note C#, 1
-	note D_, 1
-	note E_, 2
-	note E_, 2
-	note E_, 2
-	note C#, 1
-	note D_, 1
-	note E_, 2
-	note E_, 2
-	note E_, 2
-	note C#, 1
-	note D_, 1
-	note E_, 2
-	note E_, 2
-	note F#, 1
-	note E_, 1
-	note E_, 1
-	note F#, 1
 	note D_, 4
-	note F#, 2
-	sound_ret
-
-Music_Routes1_branch_9c8d::
-	note C#, 1
-	note D_, 1
-	note E_, 2
-	note G_, 2
-	note F#, 2
-	note E_, 2
-	note D_, 2
-	note C#, 2
-	octave 3
-	note B_, 2
-	octave 4
-	note C#, 2
-	note_type 12, 13, 2
-	note B_, 4
-	note_type 6, 13, 1
-	octave 3
-	note B_, 1
-	octave 4
-	note C#, 1
-	note_type 12, 13, 1
-	octave 3
-	note B_, 1
-	note A_, 1
-	octave 4
-	note C#, 1
-	note D_, 6
-	note_type 12, 13, 2
-	note F#, 1
-	note G_, 1
-	note A_, 2
-	note A_, 2
-	note F#, 2
-	note D_, 2
-	octave 5
-	note D_, 2
-	note C#, 2
-	octave 4
-	note B_, 2
-	octave 5
-	note C#, 2
-	octave 4
-	note A_, 2
-	note F#, 2
-	note D_, 3
-	note F#, 1
-	note E_, 6
-	note F#, 1
-	note G_, 1
-	note A_, 2
-	note A_, 2
-	note F#, 2
-	note A_, 2
-	octave 5
-	note D_, 2
-	note C#, 2
-	octave 4
-	note B_, 3
-	note G_, 1
-	note A_, 2
-	octave 5
-	note D_, 2
-	note C#, 2
-	note E_, 2
-	note D_, 2
-	note_type 12, 13, 1
-	octave 4
-	note D_, 2
-	note D_, 2
-	sound_ret
-	sound_ret
-
-
-Music_Routes1_Ch3::
-	vibrato 8, 2, 5
-	note_type 12, 1, 3
-
-Music_Routes1_branch_9cdd::
-	rest 2
-	octave 4
-	note D_, 4
-	note C#, 4
-	octave 3
-	note B_, 4
-	note A_, 4
-	octave 4
-	note D_, 4
-	octave 3
-	note A_, 4
-	note B_, 4
-	note A_, 4
-	octave 4
-	note C#, 4
-	octave 3
-	note A_, 4
-	note B_, 4
-	octave 4
 	note C_, 4
-	note C#, 4
-	octave 3
-	note A_, 4
+	; Measure 18 (C)
 	octave 4
+	note G_, 12
+	note G_, 4
+	; Measure 19 (C)
+	octave 4
+	note G_, 4
+	note E_, 4
 	note D_, 4
-	octave 3
-	note A_, 4
+	note C_, 4
+	; Measure 20 (F)
 	octave 4
+	note A_, 12
+	note A_, 4
+	; Measure 21 (F)
+	octave 4
+	note A_, 4
+	note F_, 4
+	note E_, 4
 	note D_, 4
-	note C#, 4
-	octave 3
-	note B_, 4
-	note A_, 4
+	; Measure 22 (G7)
 	octave 4
+	note B_, 12
+	note G_, 4
+	; Measure 23 (G7)
+	octave 4
+	note G_, 4
+	note F_, 4
 	note D_, 4
-	octave 3
-	note A_, 4
-	note B_, 4
-	note A_, 4
+	note E_, 4
+	; Measure 24 (C)
 	octave 4
-	note C#, 4
-	octave 3
-	note B_, 4
-	note A_, 4
-	note B_, 4
+	note C_, 12
+	note G_, 4
+	; Measure 25 (C)
 	octave 4
-	note C#, 4
-	octave 3
-	note A_, 4
-	octave 4
+	note G_, 4
+	note E_, 4
 	note D_, 4
-	octave 3
+	note C_, 4
+	; Measure 26 (C)
+	octave 4
+	note G_, 12
+	note G_, 4
+	; Measure 27 (C)
+	octave 4
+	note G_, 4
+	note E_, 4
+	note D_, 4
+	note C_, 4
+	; Measure 28 (F)
+	octave 4
+	note A_, 12
 	note A_, 4
+	; Measure 29 (F)
 	octave 4
-	note D_, 8
+	note A_, 4
+	note F_, 4
+	note E_, 4
+	note D_, 4
+	; Measure 30 (C)
+	octave 4
+	note G_, 4
+	note G_, 4
+	note G_, 4
+	note G_, 4
+	; Measure 31 (G7)
+	octave 4
+	note A_, 4
+	note G_, 4
+	note F_, 4
+	note D_, 4
+	; Measure 32 (C)
+	octave 4
+	note C_, 12
+	rest 4
+	sound_loop 0, .loop
+
+Music_Routes1_Ch2:
+	duty_cycle 0
+	note_type 12, 7, 2
+.loop:
+	sound_call .C
+	sound_call .C
+	sound_call .C
+	sound_call .C
+	sound_call .F
+	sound_call .C
+	sound_call .G7
+	sound_call .G7
+	sound_call .C
+	sound_call .C
+	sound_call .C
+	sound_call .C
+	sound_call .F
+	sound_call .C
+	sound_call .G7
+	sound_call .C
+	sound_call .C
+	sound_call .C
+	sound_call .C
+	sound_call .F
+	sound_call .F
+	sound_call .G7
+	sound_call .G7
+	sound_call .C
+	sound_call .C
+	sound_call .C
+	sound_call .C
+	sound_call .F
+	sound_call .F
+	sound_call .C
+	sound_call .G7
+	sound_call .C
+	sound_loop 0, .loop
+.C
+	rest 2
 	octave 3
-	note G_, 8
-	note A_, 8
+	note G_, 2
 	octave 4
-	note C#, 8
-	note D_, 8
+	note C_, 1
+	octave 4
+	note E_, 1
+	rest 2
+	octave 4
+	note G_, 2
+	octave 4
+	note E_, 2
+	rest 2
+	octave 4
+	note C_, 2
+	sound_ret
+.F
+	rest 2
 	octave 3
-	note G_, 8
-	note A_, 8
+	note A_, 2
 	octave 4
-	note D_, 6
-	sound_loop 0, Music_Routes1_branch_9cdd
+	note C_, 1
+	octave 4
+	note F_, 1
+	rest 2
+	octave 4
+	note A_, 2
+	octave 4
+	note F_, 2
+	rest 2
+	octave 4
+	note C_, 2
+	sound_ret
+.G7
+	rest 2
+	octave 3
+	note G_, 2
+	octave 3
+	note B_, 1
+	octave 4
+	note D_, 1
+	rest 2
+	octave 4
+	note F_, 2
+	octave 4
+	note D_, 2
+	rest 2
+	octave 3
+	note B_, 2
 	sound_ret
 
+Music_Routes1_Ch3:
+	note_type 12, 3, 0
+.loop:
+	sound_call .C
+	sound_call .C
+	sound_call .C
+	sound_call .C
+	sound_call .F
+	sound_call .C
+	sound_call .G7
+	sound_call .G7
+	sound_call .C
+	sound_call .C
+	sound_call .C
+	sound_call .C
+	sound_call .F
+	sound_call .C
+	sound_call .G7
+	sound_call .C
+	sound_call .C
+	sound_call .C
+	sound_call .C
+	sound_call .F
+	sound_call .F
+	sound_call .G7
+	sound_call .G7
+	sound_call .C
+	sound_call .C
+	sound_call .C
+	sound_call .C
+	sound_call .F
+	sound_call .F
+	sound_call .C
+	sound_call .G7
+	sound_call .C
+	sound_loop 0, .loop
+.C
+	octave 3
+	note C_, 3
+	rest 5
+	octave 3
+	note G_, 3
+	rest 5
+	sound_ret
+.F
+	octave 3
+	note F_, 3
+	rest 5
+	octave 4
+	note C_, 3
+	rest 5
+	sound_ret
+.G7
+	octave 3
+	note G_, 3
+	rest 5
+	octave 4
+	note D_, 3
+	rest 5
+	sound_ret
 
-Music_Routes1_Ch4::
-	toggle_noise 1
-Music_Routes1_Ch4_MainLoop::
+Music_Routes1_Ch4:
+	toggle_noise 0 ; stock drum kit: triangle and hi-hat
 	drum_speed 12
-	rest 4
-	drum_note 8, 2
+.loop:
+	drum_note 7, 2 ; brighter triangle accent
 	rest 2
-	drum_note 8, 2
+	drum_note 6, 2 ; softer triangle
+	drum_note 6, 2
+	drum_note 7, 2
 	rest 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	drum_note 8, 2
-	rest 4
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	rest 4
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	drum_note 8, 2
-	rest 4
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	drum_note 8, 2
-	rest 4
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	drum_note 8, 2
-	rest 4
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	drum_note 8, 2
-	rest 4
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	rest 2
-	drum_note 8, 2
-	drum_note 8, 2
-	sound_loop 0, Music_Routes1_Ch4_MainLoop
-	sound_ret
+	drum_note 6, 2
+	drum_note 8, 2 ; short hi-hat shake
+	sound_loop 0, .loop

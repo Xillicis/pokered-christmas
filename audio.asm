@@ -508,3 +508,6 @@ SECTION "Cries", ROMX
 INCLUDE "crysaudio/cry_headers.asm"
 
 INCLUDE "crysaudio/cries.asm"
+
+SECTION "Christmas Music", ROMX
+INCLUDE "crysaudio/music/jinglebells.asm"
