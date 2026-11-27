@@ -7,15 +7,6 @@ DelaySnowFrame::
 	push de
 	push hl
 	di ; prevent DMA from observing a partially written shadow OAM entry
-	ldh a, [hAutoBGTransferEnabled]
-	and a
-	jr nz, .waitFrame
-	ldh a, [hVBlankCopySize]
-	and a
-	jr nz, .waitFrame
-	ldh a, [hVBlankCopyDoubleSize]
-	and a
-	jr nz, .waitFrame
 	farcall DrawOverworldSnow
 	; No flakes fit: no need to upload the tile.
 	jr nc, .waitFrame
