@@ -2336,6 +2336,13 @@ LoadMapData::
 	farcall InitMapSprites ; load tile pattern data for sprites
 	call LoadTileBlockMap
 	call LoadTilesetTilePatternData
+
+	; Load snowflake graphics while the LCD is disabled.
+	ld hl, SnowTile
+	ld de, vNPCSprites tile SNOW_TILE
+	ld bc, TILE_SIZE
+	call CopyData
+
 	call LoadCurrentMapView
 ; copy current map view to VRAM
 	hlcoord 0, 0
