@@ -53,6 +53,8 @@ DelaySnowFrame::
 	ld a, 1
 	ldh [hVBlankCopySize], a
 .waitFrame
+	xor a
+	ld [wSnowCameraDY], a
 	pop hl
 	pop de
 	pop bc

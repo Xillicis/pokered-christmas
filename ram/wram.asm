@@ -1692,7 +1692,10 @@ wSavedSpriteMapY:: db
 wSavedSpriteMapX:: db
 
 wSnowPhase:: db
-	ds 4
+wSnowFraction:: db
+wSnowCameraDY:: db
+wSnowDeadMask:: db
+	ds 1
 
 wWhichPrize:: db
 
