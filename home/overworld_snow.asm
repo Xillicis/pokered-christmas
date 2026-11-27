@@ -8,19 +8,30 @@ DelaySnowFrame::
 	push hl
 	di ; prevent DMA from observing a partially written shadow OAM entry
 	farcall DrawOverworldSnow
-	; No flakes fit: no need to upload the tile.
-	jr nc, .waitFrame
-	; ROM0 source is accessible regardless of the currently selected bank.
-	ld a, LOW(SnowTile)
-	ldh [hVBlankCopySource], a
-	ld a, HIGH(SnowTile)
-	ldh [hVBlankCopySource + 1], a
-	ld a, LOW(vNPCSprites tile SNOW_TILE)
-	ldh [hVBlankCopyDest], a
-	ld a, HIGH(vNPCSprites tile SNOW_TILE)
-	ldh [hVBlankCopyDest + 1], a
-	ld a, 1
-	ldh [hVBlankCopySize], a
+
+;	ldh a, [hAutoBGTransferEnabled]
+;	and a
+;	jr nz, .waitFrame
+;	ldh a, [hVBlankCopySize]
+;	and a
+;	jr nz, .waitFrame
+;	ldh a, [hVBlankCopyDoubleSize]
+;	and a
+;	jr nz, .waitFrame
+;	farcall DrawOverworldSnow
+;	; No flakes fit: no need to upload the tile.
+;	jr nc, .waitFrame
+;	; ROM0 source is accessible regardless of the currently selected bank.
+;	ld a, LOW(SnowTile)
+;	ldh [hVBlankCopySource], a
+;	ld a, HIGH(SnowTile)
+;	ldh [hVBlankCopySource + 1], a
+;	ld a, LOW(vNPCSprites tile SNOW_TILE)
+;	ldh [hVBlankCopyDest], a
+;	ld a, HIGH(vNPCSprites tile SNOW_TILE)
+;	ldh [hVBlankCopyDest + 1], a
+;	ld a, 1
+;	ldh [hVBlankCopySize], a
 .waitFrame
 	xor a
 	ld [wSnowCameraDY], a
