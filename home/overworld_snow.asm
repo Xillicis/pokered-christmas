@@ -7,28 +7,6 @@ DelaySnowFrame::
 	push de
 	push hl
 	di ; prevent DMA from observing a partially written shadow OAM entry
-	ld a, [wUpdateSpritesEnabled]
-	cp 1
-	jr nz, .waitFrame
-	ld a, [wIsInBattle]
-	and a
-	jr nz, .waitFrame
-	ld a, [wFontLoaded]
-	bit BIT_FONT_LOADED, a
-	jr nz, .waitFrame
-	ld a, [wMovementFlags]
-	and (1 << BIT_LEDGE_OR_FISHING) | (1 << BIT_SPINNING)
-	jr nz, .waitFrame
-	ld a, [wCurMapTileset]
-	cp OVERWORLD
-	jr z, .outside
-	cp PLATEAU
-	jr z, .outside
-	cp FOREST
-	jr z, .outside
-	cp SHIP_PORT
-	jr nz, .waitFrame
-.outside
 	ldh a, [hAutoBGTransferEnabled]
 	and a
 	jr nz, .waitFrame

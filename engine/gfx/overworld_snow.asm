@@ -9,7 +9,33 @@ DEF SNOW_CAMERA_ALPHA EQU 2
 DEF SNOW_COLLISION EQU 1
 ASSERT SNOW_CAMERA_ALPHA >= 0 && SNOW_CAMERA_ALPHA <= 4
 
+DrawOverworldSnow_NoSnow:
+	xor a ; carry clear: no flakes drawn
+	ret
+
 DrawOverworldSnow::
+	ld a, [wUpdateSpritesEnabled]
+	cp 1
+	jr nz, DrawOverworldSnow_NoSnow
+	ld a, [wIsInBattle]
+	and a
+	jr nz, DrawOverworldSnow_NoSnow
+	ld a, [wFontLoaded]
+	bit BIT_FONT_LOADED, a
+	jr nz, DrawOverworldSnow_NoSnow
+	ld a, [wMovementFlags]
+	and (1 << BIT_LEDGE_OR_FISHING) | (1 << BIT_SPINNING)
+	jr nz, DrawOverworldSnow_NoSnow
+	ld a, [wCurMapTileset]
+	cp OVERWORLD
+	jr z, .outside
+	cp PLATEAU
+	jr z, .outside
+	cp FOREST
+	jr z, .outside
+	cp SHIP_PORT
+	jr nz, DrawOverworldSnow_NoSnow
+.outside
 	call AdvanceSnowPhase
 	ld c, a
 	ld b, NUM_SNOWFLAKES
