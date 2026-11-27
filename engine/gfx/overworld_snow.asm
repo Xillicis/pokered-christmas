@@ -36,7 +36,37 @@ DrawOverworldSnow::
 	cp SHIP_PORT
 	jr nz, DrawOverworldSnow_NoSnow
 .outside
+	; Simulation advances even when graphics submission is skipped.
 	call AdvanceSnowPhase
+	ldh a, [hAutoBGTransferEnabled]
+	and a
+	jr nz, DrawOverworldSnow_NoSnow
+	ldh a, [hVBlankCopySize]
+	and a
+	jr nz, DrawOverworldSnow_NoSnow
+	ldh a, [hVBlankCopyDoubleSize]
+	and a
+	jr nz, DrawOverworldSnow_NoSnow
+	; Snow is optional: never compete with scheduled background updates.
+	ldh a, [hRedrawRowOrColumnMode]
+	and a
+	jr nz, DrawOverworldSnow_NoSnow
+	ldh a, [hVBlankCopyBGSource]
+	and a
+	jr nz, DrawOverworldSnow_NoSnow
+	; The collision scan runs with interrupts disabled. Do not begin it
+	; late in the visible frame, or with an interrupt already pending.
+	ldh a, [rIF]
+	bit 0, a ; VBlank interrupt request
+	jr nz, DrawOverworldSnow_NoSnow
+	ldh a, [rLY]
+	cp 144
+	jr nc, .snowTimingOK ; current VBlank has already been serviced
+	cp 48
+	jr nc, DrawOverworldSnow_NoSnow
+.snowTimingOK
+	; Guards clobber A; reload the integer phase.
+	ld a, [wSnowPhase]
 	ld c, a
 	ld b, NUM_SNOWFLAKES
 	ld de, .seeds

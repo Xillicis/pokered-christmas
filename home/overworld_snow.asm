@@ -7,7 +7,6 @@ DelaySnowFrame::
 	push de
 	push hl
 	di ; prevent DMA from observing a partially written shadow OAM entry
-
 	farcall DrawOverworldSnow
 
 ;	ldh a, [hAutoBGTransferEnabled]
