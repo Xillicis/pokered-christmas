@@ -1617,6 +1617,7 @@ AdvancePlayerSprite::
 	ldh a, [hSCX]
 	add c
 	ldh [hSCX], a ; update background scroll X
+	call UpdateSnowCameraX
 ; shift all the sprites in the direction opposite of the player's motion
 ; so that the player appears to move relative to them
 	ld hl, wSprite01StateData1YPixels
@@ -2329,6 +2330,7 @@ LoadMapData::
 	ld [wSnowFraction], a
 	ld [wSnowCameraDY], a
 	ld [wSnowDeadMask], a
+	ld [wSnowXOffset], a
 	call LoadTextBoxTilePatterns
 	call LoadMapHeader
 	farcall InitMapSprites ; load tile pattern data for sprites

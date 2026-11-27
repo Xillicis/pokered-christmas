@@ -83,3 +83,35 @@ SnowTile:
 	db $00, $00
 SnowTileEnd:
 	ASSERT SnowTileEnd - SnowTile == 16
+
+; Horizontal camera compensation: 0 = screen, 1 = half, 2 = world.
+; AdvancePlayerSprite supplies a signed, even camera delta in C (+/-2 or 0).
+DEF SNOW_CAMERA_ALPHA_X EQU 2
+ASSERT SNOW_CAMERA_ALPHA_X >= 0 && SNOW_CAMERA_ALPHA_X <= 2
+
+; Maintain a persistent horizontal offset modulo screen width.
+; Preserve BC, DE and HL. A and flags are scratch.
+UpdateSnowCameraX::
+IF SNOW_CAMERA_ALPHA_X != 0
+	push bc
+IF SNOW_CAMERA_ALPHA_X == 1
+	sra c
+ENDC
+	ld a, [wSnowXOffset]
+	sub c
+	; Positive camera delta may underflow. Negative delta may overflow
+	; the screen width, but cannot overflow the byte (max 159 + 2).
+	bit 7, c
+	jr nz, .checkUpper
+	jr nc, .store
+	add SCREEN_WIDTH_PX
+	jr .store
+.checkUpper
+	cp SCREEN_WIDTH_PX
+	jr c, .store
+	sub SCREEN_WIDTH_PX
+.store
+	ld [wSnowXOffset], a
+	pop bc
+ENDC
+	ret

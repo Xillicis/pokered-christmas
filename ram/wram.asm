@@ -1695,7 +1695,7 @@ wSnowPhase:: db
 wSnowFraction:: db
 wSnowCameraDY:: db
 wSnowDeadMask:: db
-	ds 1
+wSnowXOffset:: db
 
 wWhichPrize:: db
 

@@ -5,7 +5,7 @@ DEF SNOW_OBJ_TILE EQU $fc
 DEF NUM_SNOWFLAKES EQU 8
 DEF SNOW_Y_PERIOD EQU 160
 ; 0 = screen space, 4 = world space. Units of 1/4.
-DEF SNOW_CAMERA_ALPHA EQU 1
+DEF SNOW_CAMERA_ALPHA EQU 2
 DEF SNOW_COLLISION EQU 1
 ASSERT SNOW_CAMERA_ALPHA >= 0 && SNOW_CAMERA_ALPHA <= 4
 
@@ -45,6 +45,17 @@ DrawOverworldSnow::
 	jr c, .xOK
 	sub SCREEN_WIDTH_PX
 .xOK
+	; A = existing wind-adjusted X in [0,159]. Add camera offset
+	; modulo 160, accounting for a possible 8-bit carry.
+	ld b, a
+	ld a, [wSnowXOffset]
+	add b
+	jr c, .wrapCameraX
+	cp SCREEN_WIDTH_PX
+	jr c, .cameraXOK
+.wrapCameraX
+	sub SCREEN_WIDTH_PX
+.cameraXOK
 	add OAM_X_OFS
 	ld [hli], a
 	pop bc
