@@ -1691,7 +1691,8 @@ wSavedSpriteScreenX:: db
 wSavedSpriteMapY:: db
 wSavedSpriteMapX:: db
 
-	ds 5
+wSnowPhase:: db
+	ds 4
 
 wWhichPrize:: db
 
